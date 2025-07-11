@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🌑 Global dark mode background & text */
+body {
+    @apply bg-gray-950 text-lime-100;
+}
+
+/*  If you prefer custom CSS */
+.grid>div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 🧭 Navigation link styles */
+.nav-link {
+    @apply px-4 py-2 text-lime-100 hover:text-lime-400 transition duration-200;
+}
+
+/* 🧩 Optional: Smooth transitions on all elements */
+* {
+    @apply transition-all duration-200 ease-in-out;
+}
+
+/* 🔄 Make images responsive */
+img {
+    @apply max-w-full h-auto;
+}
+
+/* ✍️ Form inputs (in case of raw HTML usage) */
+input,
+select,
+textarea {
+    @apply bg-gray-800 text-lime-100 border border-gray-700 rounded focus:ring-2 focus:ring-lime-400 focus:outline-none;
+}
