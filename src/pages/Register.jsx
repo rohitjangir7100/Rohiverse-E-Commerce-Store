@@ -25,7 +25,7 @@ export default function Register() {
   const [pass, setPass] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [accepted, setAccepted] = useState(false);
-  const [err, setErr] = useState("");
+  const [err] = useState("");
 
   const [phone, setPhone] = useState("");
   const [otp, setOtp] = useState("");
