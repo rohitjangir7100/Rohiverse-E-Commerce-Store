@@ -24,7 +24,7 @@ export default function Profile() {
   const [saving, setSaving] = useState(false);
   const [addresses, setAddresses] = useState([]);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [defaultIndex, setDefaultIndex] = useState(null);
+  const [setDefaultIndex] = useState(null);
   const [newAddress, setNewAddress] = useState({
     line1: "",
     city: "",
