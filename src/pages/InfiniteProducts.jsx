@@ -6,16 +6,23 @@ export default function InfiniteProducts() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  // const loadMore = async () => {
+  //   setLoading(true);
+  //   const newPhotos = await searchPexelsPhotos("fashion","electronics", page);
+  //   setPhotos((prev) => [...prev, ...newPhotos]);
+  //   setLoading(false);
+  // };
+
+  useEffect(() => {
   const loadMore = async () => {
     setLoading(true);
     const newPhotos = await searchPexelsPhotos("fashion","electronics", page);
     setPhotos((prev) => [...prev, ...newPhotos]);
     setLoading(false);
   };
+  loadMore();
+}, [page]);
 
-  useEffect(() => {
-    loadMore();
-  }, [page]);
 
   useEffect(() => {
     const handleScroll = () => {
