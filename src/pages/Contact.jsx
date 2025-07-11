@@ -2,12 +2,7 @@ import { useState } from "react";
 import { MapPinIcon, PhoneIcon } from "@heroicons/react/24/solid";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaGithub,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import { } from "react-icons/fa";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
