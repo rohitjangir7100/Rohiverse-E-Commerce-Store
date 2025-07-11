@@ -8,8 +8,6 @@ import ProductDetail from "./pages/ProductDetail";
 // import SeedProducts from "./pages/SeedProducts"; // ⚠️ Only run once, then remove
 import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
-import { Provider } from "react-redux";
-import store from "./store";
 // import AdminLogin from "./pages/AdminLogin";
 import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/Login";
