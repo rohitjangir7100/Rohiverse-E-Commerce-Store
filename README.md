@@ -1,70 +1,186 @@
-# Getting Started with Create React App
+# 🛍️ Rohiverse E-commerce Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An advanced, full-featured e-commerce web app built using **React**, **Firebase**, **Netlify Functions**, and **Pexels API**. It includes product search, cart, wishlist, checkout, order history, user profile, and more — all with modern responsive UI/UX.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+✅ Modern Product Grid/List Views  
+✅ Add to Cart + Wishlist with Microinteractions  
+✅ Firebase Authentication (Email/Password & Phone OTP)  
+✅ Avatar Upload & Profile Editing  
+✅ Address Management with Default Support  
+✅ Order History Page  
+✅ Protected Routes & Keyboard Navigation (Tab + Enter)  
+✅ Responsive Mobile-First Layout  
+✅ Dark Mode Ready  
+✅ Live Search with AI Suggestions  
+✅ Firebase Email Verification & Password Update  
+✅ Animated Transitions with Framer Motion  
+✅ Serverless Proxy to Pexels API using Netlify Functions  
+✅ Toast Notifications for Actions  
+✅ PWA Support with Favicon + Install Icon
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🏗️ Tech Stack
 
-### `npm test`
+- ⚛️ React + Tailwind CSS
+- 🔥 Firebase (Auth, Firestore, Storage)
+- 🔑 Firebase Email/Phone Login + Verification
+- 💾 Firestore (User data, addresses, orders)
+- 🖼️ Pexels API for dynamic product data
+- 📦 Netlify Functions (proxy for Pexels API)
+- 🛒 Context API for Cart & Wishlist
+- 🌐 React Router
+- ⚡ Axios for HTTP requests
+- 🧠 LocalStorage for Wishlist & Display Name
+- 🍞 react-hot-toast for feedback
+- 🧪 Framer Motion for microinteractions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🧩 Folder Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+root/
+├── public/
+├── src/
+│   ├── components/
+│   ├── context/
+│   ├── pages/
+│   ├── firebase.js
+│   ├── App.jsx
+│   └── index.js
+├── netlify/
+│   └── functions/
+│       └── pexels.js
+├── package.json
+├── tailwind.config.js
+├── netlify.toml
+└── README.md
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🧪 Local Development
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 1. Install Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2. Set Up Firebase
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Go to [Firebase Console](https://console.firebase.google.com/)
+* Create a project
+* Enable:
 
-## Learn More
+  * Authentication (Email/Password, Phone, etc.)
+  * Firestore
+  * Storage
+* Add your domain in **Authentication → Settings → Authorized Domains**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### 🔐 Create `.env` (or directly in `firebase.js`)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+REACT_APP_FIREBASE_API_KEY=your-api-key
+REACT_APP_FIREBASE_AUTH_DOMAIN=your-auth-domain
+REACT_APP_FIREBASE_PROJECT_ID=your-project-id
+REACT_APP_FIREBASE_STORAGE_BUCKET=your-storage-bucket
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+REACT_APP_FIREBASE_APP_ID=your-app-id
+```
 
-### Code Splitting
+### 3. Run Locally
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+npm run dev
+```
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## ⚙️ Netlify Function Setup
 
-### Making a Progressive Web App
+Netlify Functions act as a secure proxy to Pexels (hiding your API key):
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### ➕ Folder: `/netlify/functions/pexels.js`
 
-### Advanced Configuration
+```
+// use axios to call Pexels and return results
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### 📁 `netlify.toml`
 
-### Deployment
+```
+[build]
+  command = "npm run build"
+  publish = "build"          # or "build" for Vite, CRA etc.
+  functions = "netlify/functions"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+```
 
-### `npm run build` fails to minify
+### 🔑 Add Pexels API Key
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Inside `pexels.js`, replace `Authorization: "YOUR_PEXELS_API_KEY"` with your actual key.
+
+### ▶️ Run Functions Locally
+
+```
+npx netlify dev
+```
+
+Test your function locally at:
+
+```
+http://localhost:8888/.netlify/functions/pexels?query=shopping&per_page=5
+```
+
+---
+
+## 🔐 Firebase Config Tips
+
+* ✅ Add your **Netlify or localhost** domain to Firebase Auth → Settings → Authorized Domains.
+* ✅ Enable **Email Verification** for better security.
+* ✅ Configure Firestore rules for authenticated access only.
+
+---
+
+## 📦 Deployment
+
+1. Push your project to GitHub.
+2. Go to [Netlify](https://netlify.com), connect repo, and deploy.
+3. Make sure `netlify/functions` is picked up for serverless.
+4. Update Firebase Auth → Authorized domains with `rohiverse.netlify.app`.
+
+---
+
+## ✨ Credits
+
+* Built with ❤️ by [Rohit](https://github.com/rohitjangir7100)
+* Powered by:
+
+  * Firebase
+  * Netlify
+  * Pexels API
+  * React + Tailwind + Framer Motion
+
+---
+
+## 📬 Contact
+
+Have questions or ideas?
+Open an issue or contact me via profile page!
+
+---
+
+## 📝 License
+
+This project is open-sourced under the **MIT License**.
