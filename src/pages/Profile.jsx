@@ -34,17 +34,18 @@ export default function Profile() {
 
   // Fetch data
   useEffect(() => {
-    const unsub = onSnapshot(doc(db, "users", user.uid), (docSnap) => {
-      const data = docSnap.data();
-      if (data?.name) setName(data.name);
-      if (data?.addresses) {
-        setAddresses(data.addresses);
-        const def = data.addresses.findIndex((a) => a.default);
-        setDefaultIndex(def >= 0 ? def : null);
-      }
-    });
-    return unsub;
-  }, [user]);
+  const unsub = onSnapshot(doc(db, "users", user.uid), (docSnap) => {
+    const data = docSnap.data();
+    if (data?.name) setName(data.name);
+    if (data?.addresses) {
+      setAddresses(data.addresses);
+      const def = data.addresses.findIndex((a) => a.default);
+      setDefaultIndex(def >= 0 ? def : null);
+    }
+  });
+  return unsub;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, [user]);
 
   // Save display name
   const handleNameSave = async () => {
